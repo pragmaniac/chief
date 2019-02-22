@@ -39,6 +39,7 @@ class DeleteModuleTest extends TestCase
     /** @test */
     public function it_also_deletes_module_relations()
     {
+        $this->disableExceptionHandling();
         $page = factory(Page::class)->create();
 
         $module = NewsletterModuleFake::create(['slug' => 'other-slug']);

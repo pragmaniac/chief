@@ -3,16 +3,17 @@
 namespace Thinktomorrow\Chief\Tests\Feature\Management\Fakes;
 
 use Illuminate\Http\Request;
-use Thinktomorrow\Chief\Fields\Types\DocumentField;
+use Thinktomorrow\Chief\Fields\Fields;
 use Thinktomorrow\Chief\Fields\Types\Field;
+use Thinktomorrow\Chief\Management\Manager;
 use Thinktomorrow\Chief\Fields\Types\InputField;
 use Thinktomorrow\Chief\Fields\Types\MediaField;
+use Thinktomorrow\Chief\Fields\Types\DocumentField;
 use Thinktomorrow\Chief\Management\AbstractManager;
-use Thinktomorrow\Chief\Fields\Fields;
-use Thinktomorrow\Chief\Management\Manager;
 
 class ManagerFake extends AbstractManager implements Manager
 {
+
     public function fields(): Fields
     {
         return new Fields([

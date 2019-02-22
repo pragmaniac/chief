@@ -57,18 +57,18 @@ class ModuleManager extends AbstractManager implements Manager
 
     private function authorize($verb)
     {
-        $permission = 'update-page';
+        $permission = 'update-module';
 
         if (in_array($verb, ['index','show'])) {
-            $permission = 'view-page';
+            $permission = 'view-module';
         } elseif (in_array($verb, ['create','store'])) {
-            $permission = 'create-page';
+            $permission = 'create-module';
         } elseif (in_array($verb, ['delete'])) {
-            $permission = 'delete-page';
+            $permission = 'delete-module';
         }
 
         if (! auth()->guard('chief')->user()->hasPermissionTo($permission)) {
-            throw NotAllowedManagerRoute::notAllowedPermission($permission);
+            throw NotAllowedManagerRoute::notAllowedPermission($permission, $this);
         }
     }
 
@@ -113,7 +113,7 @@ class ModuleManager extends AbstractManager implements Manager
         if (request()->get('deleteconfirmation') !== 'DELETE') {
             throw new DeleteAborted();
         }
-        
+
         app(DeleteModule::class)->handle($this->model->id);
     }
 

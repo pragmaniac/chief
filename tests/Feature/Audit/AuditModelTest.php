@@ -3,7 +3,6 @@
 namespace Thinktomorrow\Chief\Tests\Feature\Audit;
 
 use Illuminate\Support\Facades\Route;
-use Thinktomorrow\Chief\Management\Managers;
 use Thinktomorrow\Chief\Management\Register;
 use Thinktomorrow\Chief\Pages\Page;
 use Thinktomorrow\Chief\Pages\PageManager;
@@ -56,7 +55,7 @@ class AuditTest extends TestCase
 
         $this->actingAs($user, 'chief')
             ->post(route('chief.back.managers.store', 'singles'), $this->validPageParams());
-        
+
         $page = Page::first();
 
         $response = $this->actingAs($user, 'chief')
@@ -73,11 +72,12 @@ class AuditTest extends TestCase
     /** @test */
     public function it_logs_delete_events_on_pages()
     {
+        $this->disableExceptionHandling();
         $user = $this->developer();
 
         $this->actingAs($user, 'chief')
             ->post(route('chief.back.managers.store', 'singles'), $this->validPageParams(['published' => false]));
-        
+
         $page = Page::first();
 
         $response = $this->actingAs($user, 'chief')
@@ -118,7 +118,7 @@ class AuditTest extends TestCase
 
         $this->actingAs($user, 'chief')
             ->post(route('chief.back.managers.store', 'singles'), $this->validPageParams());
-        
+
         $article = Page::first();
         $activity = $article->activity->first();
 

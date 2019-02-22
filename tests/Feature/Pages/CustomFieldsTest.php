@@ -4,8 +4,6 @@ namespace Thinktomorrow\Chief\Tests\Feature\Pages;
 
 use Illuminate\Support\Facades\Route;
 use Thinktomorrow\Chief\Management\Register;
-use Thinktomorrow\Chief\Pages\Application\CreatePage;
-use Thinktomorrow\Chief\Pages\Page;
 use Thinktomorrow\Chief\Tests\Fakes\ArticlePageWithCategories;
 use Thinktomorrow\Chief\Tests\Fakes\ArticlePageWithCategoriesManager;
 use Thinktomorrow\Chief\Tests\Fakes\Category;

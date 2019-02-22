@@ -36,7 +36,7 @@ class DeleteManagerTest extends TestCase
         $this->disableExceptionHandling();
 
         $this->asAdmin()
-            ->delete($this->fake->route('delete'));
+            ->delete($this->fake->route('delete'), [ 'deleteconfirmation' => 'DELETE']);
 
         $this->assertNull($this->model->fresh());
     }
