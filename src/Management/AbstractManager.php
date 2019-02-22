@@ -82,7 +82,7 @@ abstract class AbstractManager
         if (! $this->model->exists) {
             throw new NonExistingRecord('Model does not exist yet but is expected.');
         }
-        
+
         return $this->model;
     }
 
@@ -120,7 +120,7 @@ abstract class AbstractManager
         return $modelRoutes[$verb] ?? null;
     }
 
-    
+
 
     public function can($verb): bool
     {
@@ -228,7 +228,7 @@ abstract class AbstractManager
         return (new static($this->registration))->manage($this->model);
     }
 
-    
+
 
     public function delete()
     {

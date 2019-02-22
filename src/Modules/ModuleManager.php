@@ -57,14 +57,14 @@ class ModuleManager extends AbstractManager implements Manager
 
     private function authorize($verb)
     {
-        $permission = 'update-module';
+        $permission = 'update-page';
 
         if (in_array($verb, ['index','show'])) {
-            $permission = 'view-module';
+            $permission = 'view-page';
         } elseif (in_array($verb, ['create','store'])) {
-            $permission = 'create-module';
+            $permission = 'create-page';
         } elseif (in_array($verb, ['delete'])) {
-            $permission = 'delete-module';
+            $permission = 'delete-page';
         }
 
         if (! auth()->guard('chief')->user()->hasPermissionTo($permission)) {

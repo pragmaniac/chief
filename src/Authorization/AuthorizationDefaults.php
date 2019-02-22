@@ -52,11 +52,6 @@ class AuthorizationDefaults
             'update-page',
             'delete-page',
 
-            'view-module',
-            'create-module',
-            'update-module',
-            'delete-module',
-
             'view-squanto',
             'create-squanto',
             'update-squanto',
