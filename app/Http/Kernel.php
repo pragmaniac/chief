@@ -2,12 +2,14 @@
 
 namespace Thinktomorrow\Chief\App\Http;
 
-use Thinktomorrow\Chief\App\Http\Middleware\AuthenticateChiefSession;
-use Thinktomorrow\Chief\App\Http\Middleware\AuthenticateSuperadmin;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Thinktomorrow\Chief\App\Http\Middleware\Honeypot;
 use Thinktomorrow\Chief\App\Http\Middleware\OptimizeImages;
+use Thinktomorrow\Chief\App\Http\Middleware\ChiefAdminLocale;
 use Thinktomorrow\Chief\App\Http\Middleware\ChiefValidateInvite;
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Thinktomorrow\Chief\App\Http\Middleware\AuthenticateSuperadmin;
+use Thinktomorrow\Chief\App\Http\Middleware\AuthenticateChiefSession;
+use Thinktomorrow\Chief\App\Http\Middleware\ChiefRedirectIfAuthenticated;
 
 class Kernel extends HttpKernel
 {
@@ -74,7 +76,8 @@ class Kernel extends HttpKernel
         'squanto.developer' => \Thinktomorrow\Squanto\Manager\Http\Middleware\Developer::class,
 
         // Required chief middleware
-        'chief-guest'             => \Thinktomorrow\Chief\App\Http\Middleware\ChiefRedirectIfAuthenticated::class,
+        'chief-guest'             => ChiefRedirectIfAuthenticated::class,
         'chief-validate-invite'   => ChiefValidateInvite::class,
+        'chief-admin-locale'      => ChiefAdminLocale::class
     ];
 }

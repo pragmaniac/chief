@@ -1,14 +1,14 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title','Voeg nieuw menu-item toe')
+@section('page-title', trans('chief::menu.edit_menuitem_title'))
 
 @component('chief::back._layouts._partials.header')
-    @slot('title', 'Menu item bewerken.')
+    @slot('title', trans('chief::menu.edit_menuitem'))
     @slot('subtitle')
-        <a class="center-y" href="{{ route('chief.back.menus.index', $menuitem->menu_type) }}"><span class="icon icon-arrow-left"></span> Terug naar het menu overzicht</a>
+        <a class="center-y" href="{{ route('chief.back.menus.index', $menuitem->menu_type) }}"><span class="icon icon-arrow-left"></span> @lang('chief::menu.back')</a>
     @endslot
         <span class="btn btn-link inline-block inline-s" @click="showModal('delete-menuitem-{{$menuitem->id}}')">
-            verwijderen
+            @lang('chief::menu.remove')
         </span>
         <button data-submit-form="updateForm" type="button" class="btn btn-primary">Opslaan</button>
     @endcomponent

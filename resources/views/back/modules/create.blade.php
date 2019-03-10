@@ -1,10 +1,10 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title','Voeg nieuw module toe')
+@section('page-title', trans('chief::modules.add_module'))
 
 @component('chief::back._layouts._partials.header')
     @slot('title', 'Een ' . $module->collectionDetails()->singular.' toevoegen.')
-    <button data-submit-form="createForm" type="button" class="btn btn-primary">Toevoegen</button>
+    <button data-submit-form="createForm" type="button" class="btn btn-primary">@lang('chief::modules.add')</button>
 @endcomponent
 
 @section('content')

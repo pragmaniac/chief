@@ -1,11 +1,11 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title', $modelManager->details()->singular .' archief')
+@section('page-title', $modelManager->details()->singular .' '.trans('chief::managers.archive_title'))
 
 @component('chief::back._layouts._partials.header')
-    @slot('title', $modelManager->details()->singular .' archief')
+    @slot('title', $modelManager->details()->singular .' '.trans('chief::managers.archive_title'))
     @slot('subtitle')
-        <a class="center-y" href="{{ $modelManager->route('index') }}"><span class="icon icon-arrow-left"></span> Terug naar alle {{ $modelManager->details()->plural }}</a>
+        <a class="center-y" href="{{ $modelManager->route('index') }}"><span class="icon icon-arrow-left"></span> @lang('chief::managers.back_all'){{ $modelManager->details()->plural }}</a>
     @endslot
 @endcomponent
 

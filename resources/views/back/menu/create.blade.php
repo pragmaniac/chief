@@ -1,10 +1,10 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title','Voeg nieuw menu-item toe')
+@section('page-title', trans('chief::menu.add_menuitem_title'))
 
 @component('chief::back._layouts._partials.header')
-    @slot('title', 'Menu item toevoegen.')
-        <button data-submit-form="createForm" type="button" class="btn btn-primary">Toevoegen</button>
+    @slot('title', trans('chief::menu.add_menuitem'))
+        <button data-submit-form="createForm" type="button" class="btn btn-primary">@lang('chief::menu.add')</button>
     @endcomponent
 
     @section('content')

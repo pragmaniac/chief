@@ -1,11 +1,11 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title', 'Nieuwe rol toevoegen')
+@section('page-title', trans('chief::roles.create'))
 
 @chiefheader
 @slot('title', 'Nieuwe rol toevoegen')
 	<div class="center-y right inline-group">
-		<button data-submit-form="createForm" type="button" class="btn btn-o-primary">Voeg nieuwe rol toe</button>
+		<button data-submit-form="createForm" type="button" class="btn btn-o-primary">@lang('chief:roles.add_role')</button>
 	</div>
 @endchiefheader
 
@@ -16,7 +16,7 @@
 
 		@include('chief::back.authorization.roles._form')
 
-		<button type="submit" class="btn btn-primary right">Voeg nieuwe rol toe</button>
+		<button type="submit" class="btn btn-primary right">@lang('chief:roles.add_role')</button>
 	</form>
 
 @endsection

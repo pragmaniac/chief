@@ -73,7 +73,6 @@ class Page extends Model implements TranslatableContract, HasMedia, ActsAsParent
     public function getAttribute($value)
     {
         $value = $this->getTranslatableAttribute($value);
-
         if ($this->shouldParseWithSnippets($value)) {
             $value = $this->parseWithSnippets($value);
         }

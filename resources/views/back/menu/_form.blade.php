@@ -1,6 +1,6 @@
 @chiefformgroup(['field' => 'label'])
-    @slot('label', 'Label')
-    @slot('description', 'Dit is de tekst die wordt getoond in het menu. Verkies een korte, duidelijke term.')
+    @slot('label', trans('chief::menu.label'))
+    @slot('description', trans('chief::menu.label_description'))
     @if(count($menuitem->availableLocales()) > 1)
         <tabs v-cloak>
             @foreach($menuitem->availableLocales() as $locale)
@@ -31,7 +31,7 @@
 <section class="formgroup">
     <div class="row gutter-l">
         <div class="formgroup-info column-4">
-            <h2 class="formgroup-label">Link</h2>
+            <h2 class="formgroup-label">@lang('chief::menu.link')</h2>
         </div>
         <div class="formgroup-input column-8">
 
@@ -46,7 +46,7 @@
                                id="typeInternal"
                                type="radio">
                         <span class="custom-radiobutton --primary"></span>
-                        <strong>Interne pagina</strong>
+                        <strong>@lang('chief::menu.internal_page')</strong>
 
                         <div v-if="type == 'internal'" class="stack-xs input-group-prefix relative">
                             <chief-multiselect
@@ -73,7 +73,7 @@
                                id="typeCustom"
                                type="radio">
                         <span class="custom-radiobutton --primary"></span>
-                        <strong>Of kies een eigen link.</strong>
+                        <strong>@lang('chief::menu.choose_link')</strong>
 
                         <div v-if="type == 'custom'" class="stack-xs input-group-prefix relative">
                             <tabs v-cloak>
@@ -96,7 +96,7 @@
                                id="typeNolink"
                                type="radio">
                         <span class="custom-radiobutton --primary"></span>
-                        <strong>Geen link toevoegen aan dit menuitem. </strong>
+                        <strong>@lang('chief::menu.no_link')</strong>
                     </label>
                 </div>
             </radio-options>
@@ -106,8 +106,8 @@
 
 @if(count($parents) > 0)
     @chiefformgroup(['field' => 'parent_id'])
-        @slot('label', 'Niveau')
-        @slot('description', 'Zet dit item op het hoogste niveau of plaats het onder een bestaand.')
+        @slot('label', trans('chief::menu.level'))
+        @slot('description', trans('chief::menu.level_description'))
         <radio-options inline-template :errors="errors" default-type="{{ !!old('parent_id', $menuitem->parent_id) ? '1' : '0' }}">
             <div>
                 <label class="block stack-xs custom-indicators" for="withoutParentId">
@@ -117,7 +117,7 @@
                            id="withoutParentId"
                            type="radio">
                     <span class="custom-radiobutton --primary"></span>
-                    <strong>Geef dit item weer op het hoogste niveau.</strong>
+                    <strong>@lang('chief::menu.top_level')</strong>
                 </label>
                 <label class="block stack-xs custom-indicators" for="parentId">
                     <input v-on:click="changeType('1')" {{ !!old('parent_id', $menuitem->parent_id) ? 'checked="checked"':'' }}
@@ -126,7 +126,7 @@
                            id="parentId"
                            type="radio">
                     <span class="custom-radiobutton --primary"></span>
-                    <strong>Selecteer het menuitem waaronder deze zich behoort.</strong>
+                    <strong>@lang('chief::menu.select_parent')</strong>
 
                     <div v-if="type == '1'" class="stack-xs input-group-prefix relative">
                         <chief-multiselect
@@ -135,7 +135,7 @@
                                 selected='@json(old('parent_id', $menuitem->parent_id))'
                                 labelkey="label"
                                 valuekey="id"
-                                placeholder="Kies het bovenliggende menuitem"
+                                placeholder="@lang('chief::menu.choose_parent')"
                         >
                         </chief-multiselect>
                     </div>
@@ -147,15 +147,15 @@
 
 
 @chiefformgroup(['field' => 'collection_type'])
-    @slot('label', 'Onderliggende pagina groep')
-    @slot('description', 'Automatische oplijsting van een pagina groep.')
+    @slot('label', trans('chief::menu.sub_pagegroup_label'))
+    @slot('description', trans('chief::menu.sub_pagegroup_description'))
     <chief-multiselect
             name="collection_type"
             :options='@json($collections)'
             selected='@json(old('collection_type', $menuitem->collection_type))'
             labelkey="plural"
             valuekey="key"
-            placeholder="kies een paginagroep"
+            placeholder="@lang('chief::menu.choose_pagegroup')"
     >
     </chief-multiselect>
 
@@ -164,8 +164,8 @@
 
 @if($menuitem->id && ! $menuitem->siblings()->isEmpty())
     @chiefformgroup(['field' => 'order'])
-        @slot('label', 'Sortering')
-        @slot('description', 'Sortering van dit menu item op het huidige niveau')
+        @slot('label', trans('chief::menu.ordering_title'))
+        @slot('description', trans('chief::menu.ordering_description'))
         <div class="row">
             <div class="column-1">
                 <input type="number" name="order" id="order" placeholder="Menu order" value="{{ old('order', $menuitem->order) }}" class="input inset-s text-center">
@@ -175,7 +175,7 @@
 
             <div class="panel panel-default bg-white">
                 <div class="inset-s" style="border-bottom:1px solid #f5f5f5">
-                    <span class="bold">Huidige sortering op dit niveau:</span>
+                    <span class="bold">@lang('chief::menu.ordering_current')</span>
                 </div>
                 @foreach($menuitem->siblingsIncludingSelf() as $sibling)
                     <div class="inset-s" style="border-bottom:1px solid #f5f5f5;{{ $sibling->id == $menuitem->id ? 'background-color:#f5f5f5;' : '' }}">

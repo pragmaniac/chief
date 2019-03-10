@@ -12,16 +12,16 @@
                 @if(\Illuminate\Support\Facades\Gate::check('update-page') || \Illuminate\Support\Facades\Gate::check('view-page') || \Illuminate\Support\Facades\Gate::check('view-squanto'))
                     <li>
                         <dropdown>
-                            <span class="center-y nav-item {{ (isActiveUrl('admin/translations*') || isActiveUrl('admin/menu*')) ? 'active' : '' }}" slot="trigger" slot-scope="{ toggle, isActive }" @click="toggle">Site</span>
+                            <span class="center-y nav-item {{ (isActiveUrl('admin/translations*') || isActiveUrl('admin/menu*')) ? 'active' : '' }}" slot="trigger" slot-scope="{ toggle, isActive }" @click="toggle">@lang('chief::nav.site')</span>
                             <div v-cloak class="dropdown-box inset-s">
                                 @can('update-page')
-                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/menus*') ? 'active' : '' }}" href="{{ route('chief.back.menus.index') }}">Menu</a>
+                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/menus*') ? 'active' : '' }}" href="{{ route('chief.back.menus.index') }}">@lang('chief::nav.menu')</a>
                                 @endcan
                                 @can('view-page')
-                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/modules*') ? 'active' : '' }}" href="{{ route('chief.back.modules.index') }}">Vaste modules</a>
+                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/modules*') ? 'active' : '' }}" href="{{ route('chief.back.modules.index') }}">@lang('chief::nav.modules')</a>
                                 @endcan
                                 @can('view-squanto')
-                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/translations*') ? 'active' : '' }}" href="{{ route('squanto.index') }}">Teksten</a>
+                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/translations*') ? 'active' : '' }}" href="{{ route('squanto.index') }}">@lang('chief::nav.translations')</a>
                                 @endcan
                             </div>
                         </dropdown>
@@ -39,11 +39,11 @@
                             <span class="center-y nav-item {{ (isActiveUrl('admin/users*') || isActiveUrl('admin/settings*') || isActiveUrl('admin/audit*')) ? 'active' : '' }}" slot="trigger" slot-scope="{ toggle, isActive }" @click="toggle"><span class="icon icon-cog"></span></span>
                             <div v-cloak class="dropdown-box inset-s">
                                 @can('view-user')
-                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/users*') ? 'active' : '' }}" href="{{ route('chief.back.users.index') }}">Users</a>
+                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/users*') ? 'active' : '' }}" href="{{ route('chief.back.users.index') }}">@lang('chief::nav.users')</a>
                                 @endcan
-                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/settings*') ? 'active' : '' }}" href="{{ route('chief.back.settings.edit') }}">Settings</a>
+                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/settings*') ? 'active' : '' }}" href="{{ route('chief.back.settings.edit') }}">@lang('chief::nav.settings')</a>
                                 @can('view-audit')
-                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/audit*') ? 'active' : '' }}" href="{{ route('chief.back.audit.index') }}">Audit</a>
+                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/audit*') ? 'active' : '' }}" href="{{ route('chief.back.audit.index') }}">@lang('chief::nav.audit')</a>
                                 @endcan
                             </div>
                         </dropdown>
@@ -53,9 +53,9 @@
                         <dropdown>
                             <span class="nav-item" slot="trigger" slot-scope="{ toggle, isActive }" @click="toggle">{{ chiefAdmin()->firstname }}</span>
                             <div v-cloak class="dropdown-box">
-                                <a class="block squished-s --link-with-bg" href="{{ route('chief.back.you.edit') }}">Wijzig profiel</a>
-                                <a class="block squished-s --link-with-bg" href="{{ route('chief.back.password.edit') }}">Wijzig wachtwoord</a>
-                                <a class="block squished-s --link-with-bg" href="{{ route('chief.back.logout') }}">Log out</a>
+                                <a class="block squished-s --link-with-bg" href="{{ route('chief.back.you.edit') }}">@lang('chief::nav.edit_profile')</a>
+                                <a class="block squished-s --link-with-bg" href="{{ route('chief.back.password.edit') }}">@lang('chief::nav.edit_password')</a>
+                                <a class="block squished-s --link-with-bg" href="{{ route('chief.back.logout') }}">@lang('chief::nav.logout')</a>
                             </div>
                         </dropdown>
                     </li>

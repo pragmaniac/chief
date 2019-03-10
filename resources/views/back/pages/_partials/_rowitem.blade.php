@@ -2,7 +2,7 @@
     <div class="column-9">
 
             @if($page->isArchived())
-                <span class="text-black bold" title="Een gearchiveerde {{ $page->collectionDetails()->singular }} kan niet worden bewerkt.">
+                <span class="text-black bold" title="@lang('chief::pages.archived_edit_error', ['pagetype' => {{ $page->collectionDetails()->singular }}])">
                     {{ $page->getTranslationFor('title') }}
                 </span>
             @else
@@ -12,7 +12,7 @@
             @endif
 
             <div>
-                <span class="text-subtle">Laatst aangepast op {{ $page->updated_at->format('d/m/Y') }}</span>
+                <span class="text-subtle">@lang('chief::pages.last_edit') {{ $page->updated_at->format('d/m/Y') }}</span>
             </div>
             <div class="stack-s font-s">
                 {{ teaser($page->content,250,'...') }}

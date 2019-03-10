@@ -25,8 +25,8 @@
         </div>
 
         <div class="stack-s">
-            <label for="slugField">Interne titel</label>
-            <input type="text" name="slug" id="slugField" class="input inset-s" placeholder="e.g. nieuwsbrief, contacteer-ons, homepage-banner" value="{{ old('slug') }}">
+            <label for="slugField">@lang('chief::modules.internal_title')</label>
+            <input type="text" name="slug" id="slugField" class="input inset-s" placeholder="@lang('chief::modules.example_placeholder')" value="{{ old('slug') }}">
         </div>
 
         <error class="caption text-warning" field="slug" :errors="errors.all()"></error>
@@ -34,6 +34,6 @@
     </form>
 
     <div slot="modal-action-buttons" v-cloak>
-        <button type="button" class="btn btn-primary" data-submit-form="createModuleForm">Voeg module toe</button>
+        <button type="button" class="btn btn-primary" data-submit-form="createModuleForm">@lang('chief::modules.add_module')</button>
     </div>
 </modal>

@@ -5,7 +5,7 @@
 @chiefheader
 	@slot('title', $role->name)
 	<div class="center-y right inline-group">
-		<button data-submit-form="editForm" type="button" class="btn btn-o-primary">Bewaar</button>
+		<button data-submit-form="editForm" type="button" class="btn btn-o-primary">@lang('chief::roles.save')</button>
 	</div>
 @endchiefheader
 
@@ -17,7 +17,7 @@
 
 			@include('chief::back.authorization.roles._form')
 
-			<button type="submit" class="btn btn-primary right">Bewaar</button>
+			<button type="submit" class="btn btn-primary right">@lang('chief::roles.save')</button>
 		</form>
 
 @endsection

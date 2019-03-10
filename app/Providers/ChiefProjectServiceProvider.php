@@ -15,6 +15,11 @@ class ChiefProjectServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'chief');
+        $this->publishes([
+            __DIR__.'/../../resources/lang' => resource_path('lang/vendor/chief'),
+        ]);
+        
         // Out of the box morphables - the key 'singles' is the page's default morphKey.
         Relation::morphMap([
             'singles'   => Single::class,

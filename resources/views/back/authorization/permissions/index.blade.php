@@ -1,21 +1,21 @@
 @extends('chief::back._layouts.master')
 
-@section('title', '| Permissions')
+@section('title', '| '. trans('chief::permissions.index_title'))
 
 @section('content')
 
 	<div class="col-lg-10 col-lg-offset-1">
-		<h1><i class="fa fa-key"></i>Available Permissions
+		<h1><i class="fa fa-key"></i>@lang('chief::permissions.available')
 
 			@can('view_users')
-				<a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
+				<a href="{{ route('users.index') }}" class="btn btn-default pull-right">@lang('chief::permissions.users')</a>
 			@else
-				<a class="btn btn-default pull-right disabled">Users</a>
+				<a class="btn btn-default pull-right disabled">@lang('chief::permissions.users')</a>
 			@endcan
 			@can('view_roles')
-				<a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a>
+				<a href="{{ route('roles.index') }}" class="btn btn-default pull-right">@lang('chief::roles.index_title')</a>
 			@else
-				<a class="btn btn-default pull-right disabled">Roles</a>
+				<a class="btn btn-default pull-right disabled">@lang('chief::roles.index_title')</a>
 			@endcan
 		</h1>
 		<hr>
@@ -24,8 +24,8 @@
 
 				<thead>
 				<tr>
-					<th>Permissions</th>
-					<th>Operation</th>
+					<th>@lang('chief::permissions.index_title')</th>
+					<th>@lang('chief::permissions.index_title')Operation</th>
 				</tr>
 				</thead>
 				<tbody>

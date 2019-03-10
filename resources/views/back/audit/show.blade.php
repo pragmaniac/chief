@@ -1,22 +1,22 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title','Audit')
+@section('page-title',trans('chief::audit.audit'))
 
 @component('chief::back._layouts._partials.header')
-    @slot('title', 'Events for "'. $causer->fullname . '"')
+    @slot('title', trans('chief::audit.events_for').' "'. $causer->fullname . '"')
 @endcomponent
 
 @section('content')
     <div class="treeview stack-l">
         <div class="row">
             <div class="column-3 center-y">
-                <strong>Activity</strong>
+                <strong>@lang('chief::audit.activity')</strong>
             </div>
             <div class="column-3 center-y">
-                <strong>Model</strong>
+                <strong>@lang('chief::audit.model')</strong>
             </div>
             <div class="column-3 center-y">
-                <strong>Timestamp</strong>
+                <strong>@lang('chief::audit.timestamp')</strong>
             </div>
         </div>
         @foreach($activity as $event)

@@ -1,10 +1,10 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title', 'Rollen')
+@section('page-title', trans('chief::roles.index_title'))
 
 @chiefheader
 	@slot('title', 'Rollen')
-	<a href="{{ route('chief.back.roles.create') }}" class="btn btn-link text-primary">een nieuwe rol toevoegen</a>
+	<a href="{{ route('chief.back.roles.create') }}" class="btn btn-link text-primary">@lang('chief::roles.index_add_role')</a>
 @endchiefheader
 
 @section('content')

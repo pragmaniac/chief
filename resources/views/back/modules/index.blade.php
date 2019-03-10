@@ -1,13 +1,13 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title', "Modules")
+@section('page-title', trans('chief::modules.index_title'))
 
 @component('chief::back._layouts._partials.header')
     @slot('title', 'Vaste modules')
         <div class="inline-group-s">
             <a @click="showModal('create-module')" class="btn btn-primary row center-y">
                 <i class="icon icon-plus"></i>
-                Voeg een module toe
+                @lang('chief::modules.add_module')
             </a>
         </div>
     @endcomponent
@@ -18,13 +18,11 @@
             <div class="center-center stack-xl">
                 <div>
                     <a @click="showModal('create-module')" class="btn btn-primary squished">
-                        <i class="icon icon-zap icon-fw"></i> Voeg jouw eerste module toe.
+                        <i class="icon icon-zap icon-fw"></i>@lang('chief::modules.add_first_module')
                     </a>
                     <p class="stack">
-                        <strong>Wat zijn modules nu eigenlijk?</strong><br>
-                        Een module is een blokelement dat je kan toevoegen aan een of meerdere pagina's. <br>Bijvoorbeeld een blokje 'contacteer ons' of 'nieuwsbrief inschrijving'.
-                        <br><br>
-                        Gewoon even proberen, je doet niets fout :)
+                        <strong>@lang('chief::modules.what_title')</strong><br>
+                        @lang('chief::modules.what_description')
                     </p>
                 </div>
 

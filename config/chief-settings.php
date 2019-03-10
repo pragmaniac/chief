@@ -33,5 +33,16 @@ return [
     'client' => [
         'name' => 'Think Tomorrow',
         'app_name' => 'Chief',
-    ]
+    ],
+
+    /**
+     * Admin language
+     *
+     * Change the language of the admin panel. The translations will be published to the
+     * resources/lang/vendor. Feel free to add any language you need there
+     * or make a PR so we can add it to the core.
+     */
+    'admin_locale' => 'en',
+    
+    'admin_fallback_locale' => 'nl',
 ];

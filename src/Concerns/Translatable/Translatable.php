@@ -66,7 +66,6 @@ trait Translatable
         if (!$locale) {
             return $this->getAttribute($attribute);
         }
-
         if (!$this->hasTranslation($locale) && $strict) {
             return null;
         }

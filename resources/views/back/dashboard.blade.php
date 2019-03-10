@@ -11,8 +11,8 @@
 @section('content')
     <div class="row gutter stack-l">
         <div class="column-4 stretched-xl">
-            <h1>Welkom op je dashboard, {{ Auth::user()->firstname }}</h1>
-            <p>Don't try to follow trends. Create them</p>
+            <h1>@lang('chief::dashboard.welcome'), {{ Auth::user()->firstname }}</h1>
+            <p>@lang('chief::dashboard.inspiring')</p>
         </div>
         <div class="gutter column-8 inset right">
             @foreach(app(\Thinktomorrow\Chief\Management\Managers::class)->findByTag(['page', 'dashboard']) as $manager)
@@ -29,7 +29,7 @@
                                 <div class="stack">
                                     <h1 class="--remove-margin">{{ $manager->findAllManaged()->count() }}</h1>
                                     <p>{{ $manager->details()->plural }}</p>
-                                    <a class="btn btn-secondary" href="{{ $manager->route('index') }}">Ga naar {{ $manager->details()->plural }}</a>
+                                    <a class="btn btn-secondary" href="{{ $manager->route('index') }}">@lang('chief::dashboard.goto') {{ $manager->details()->plural }}</a>
                                 </div>
                             </div>
                         </div>

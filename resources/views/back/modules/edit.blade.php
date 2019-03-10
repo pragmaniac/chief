@@ -1,6 +1,6 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title','Pas "' .$module->slug .'" aan')
+@section('page-title', trans('chief::modules.edit_module', ['slug' => $module->slug]))
 
 
 @component('chief::back._layouts._partials.header')
@@ -8,9 +8,9 @@
         {{ $module->slug }} <span class="text-subtle">{{ $module->collectionDetails()->singular }}</span>
     @endslot
     @slot('subtitle')
-        <a class="center-y" href="{{ route('chief.back.modules.index') }}"><span class="icon icon-arrow-left"></span> Terug naar alle modules</a>
+        <a class="center-y" href="{{ route('chief.back.modules.index') }}"><span class="icon icon-arrow-left"></span> @lang('chief::modules.back')</a>
     @endslot
-    <button data-submit-form="updateForm" type="button" class="btn btn-primary">Wijzigingen opslaan</button>
+    <button data-submit-form="updateForm" type="button" class="btn btn-primary">@lang('chief::modules.save')</button>
 @endcomponent
 
 @section('content')

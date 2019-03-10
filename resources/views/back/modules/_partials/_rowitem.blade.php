@@ -4,18 +4,18 @@
                 {{ $module->slug }}
             </a>
             <div>
-                <span class="text-subtle">{{ $module->collectionDetails()->singular }} | Aangepast op: {{ $module->updated_at->format('d/m/Y') }}</span>
+                <span class="text-subtle">{{ $module->collectionDetails()->singular }} | @lang('chief::modules.edited_on') {{ $module->updated_at->format('d/m/Y') }}</span>
             </div>
     </div>
     <div class="column-3 text-right">
         <options-dropdown class="inline-block">
             <div class="inset-s" v-cloak>
-                <a href="{{ route('chief.back.modules.edit',$module->getKey()) }}" class="block squished-s --link-with-bg">Aanpassen</a>
+                <a href="{{ route('chief.back.modules.edit',$module->getKey()) }}" class="block squished-s --link-with-bg">@lang('modules.edit')</a>
 
                 <hr class="stack-s">
 
                 <a @click="showModal('delete-module-{{$module->id}}')" class="block squished-s text-error --link-with-bg">
-                    Verwijder {{ $module->collectionDetails()->singular }}
+                    @lang('modules.remove') {{ $module->collectionDetails()->singular }}
                 </a>
             </div>
         </options-dropdown>

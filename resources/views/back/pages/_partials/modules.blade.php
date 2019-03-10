@@ -2,14 +2,13 @@
     $page = $manager->model();
 ?>
 
-<h2>Eigen modules</h2>
-<p>Hier vind je alle modules (blokken) die specifiek zijn voor deze pagina. Je kan deze op de pagina plaatsen door
-    ze te selecteren in de <a href="#pagina">pagina tab</a></p>
+<h2>@lang('chief::pages.modules.title')</h2>
+<p>@lang('chief::pages.modules.description')</p>
 @if($page->modules->isEmpty())
     <div class="center-center stack-xl">
         <div>
             <a @click="showModal('create-module')" class="btn btn-primary squished">
-            <i class="icon icon-zap icon-fw"></i> Voeg een eerste module toe specifiek voor deze pagina.
+            <i class="icon icon-zap icon-fw"></i>@lang('chief::pages.modules.add')
             </a>
         </div>
     </div>
@@ -26,7 +25,7 @@
     <div class="stack">
         <a @click="showModal('create-module')" class="btn btn-primary">
         <i class="icon icon-plus"></i>
-        Voeg een module toe
+            @lang('chief::modules.add')
         </a>
     </div>
 @endif

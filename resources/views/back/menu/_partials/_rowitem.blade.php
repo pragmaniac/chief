@@ -10,7 +10,7 @@
         @else
             <a href="{{ route('chief.back.menuitem.edit', $item->id) }}">{{ $item->label }}</a>
             @if($item->collection_type)
-                &nbsp;<em class="text-subtle">pagina groep</em>
+                &nbsp;<em class="text-subtle">@lang('chief::menu.pagegroup')</em>
             @endif
         @endif
     </div>
@@ -27,7 +27,7 @@
 
     <div class="column-2 text-right">
         @if(!$item->auto_generated)
-            <a href="{{ route('chief.back.menuitem.edit', $item->id) }}" class="">Aanpassen</a>
+            <a href="{{ route('chief.back.menuitem.edit', $item->id) }}" class="">@lang('chief::menu.edit')</a>
         @endif
     </div>
 </div>

@@ -8,18 +8,17 @@
         @if($modelManager->can('create'))
             <a href="{{ $modelManager->route('create') }}" class="btn btn-primary">
                 <i class="icon icon-plus"></i>
-                Voeg een {{ $modelManager->details()->singular }} toe
+                @lang('chief::managers.add', ['module' => $modelManager->details()->singular])
             </a>
         @endif
     </div>
 @endcomponent
 
 @section('content')
-
     @if($managers->isEmpty() && $modelManager->can('create'))
         <div class="center-center stack-xl">
             <a href="{{ $modelManager->route('create') }}" class="btn btn-primary squished-l">
-                <i class="icon icon-zap icon-fw"></i> Tijd om een {{ $modelManager->details()->singular }} toe te voegen
+                <i class="icon icon-zap icon-fw"></i> @lang('chief::managers.first_add', ['module' => $modelManager->details()->singular])
             </a>
         </div>
     @endif
@@ -34,7 +33,7 @@
         @if( ! $archiveAssistant->findAll()->isEmpty())
             <hr>
             <div class="center-x">
-                <a class="squished-s" href="{{ $archiveAssistant->route('index') }}">Bekijk de gearchiveerde items</a>
+                <a class="squished-s" href="{{ $archiveAssistant->route('index') }}">@lang('chief::managers.view_archived')</a>
             </div>
         @endif
     @endif

@@ -15,6 +15,6 @@
     </form>
 
     <div slot="modal-action-buttons" v-cloak>
-        <button type="button" class="btn btn-primary" data-submit-form="createPageForm">Voeg toe</button>
+        <button type="button" class="btn btn-primary" data-submit-form="createPageForm">@lang('chief::pages.add')</button>
     </div>
 </modal>

@@ -3,12 +3,11 @@
         @method('DELETE')
         @csrf
 
-        <h2>Het menuitem - {{ $menuitem->label }} - verwijderen?</h2>
-        <p>Eenmaal verwijderd, zal het menuitem onmiddellijk van de site verdwijnen.</p>
-
+        <h2>@lang('chief::menu.delete', ['label' => $menuitem->label])</h2>
+        <p>@lang('chief::menu.delete_confirm')</p>
     </form>
 
     <div slot="modal-action-buttons" v-cloak>
-        <button data-submit-form="deleteForm-menuitem-{{$menuitem->id}}" class="btn btn-o-tertiary inline-s" type="button"><span class="icon icon-trash"></span> verwijderen</button>
+        <button data-submit-form="deleteForm-menuitem-{{$menuitem->id}}" class="btn btn-o-tertiary inline-s" type="button"><span class="icon icon-trash"></span> @lang('chief::menu.confirm_removal')</button>
     </div>
 </modal>

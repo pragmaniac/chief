@@ -9,7 +9,7 @@
                 </div>
             @endif
             <div class="stack-s font-s">
-                In archief sinds {{ $manager->assistant('archive')->archivedAt()->format('d/m/Y H:i') }}
+                @lang('chief::managers.archived_since') {{ $manager->assistant('archive')->archivedAt()->format('d/m/Y H:i') }}
                 {!! $manager->details()->intro !!}
             </div>
         </div>

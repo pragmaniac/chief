@@ -104,6 +104,7 @@ class ChiefServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../../config/chief.php', 'thinktomorrow.chief');
+        $this->mergeConfigFrom(__DIR__.'/../../config/squanto.php', 'thinktomorrow.squanto');
         $this->mergeConfigFrom(__DIR__.'/../../config/chief-settings.php', 'thinktomorrow.chief-settings');
 
         $this->setupEnvironmentProviders();

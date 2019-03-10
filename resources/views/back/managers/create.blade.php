@@ -6,11 +6,11 @@
 @component('chief::back._layouts._partials.header')
     @slot('title', $manager->details()->title)
     @slot('subtitle')
-        <a class="center-y" href="{{ $manager->route('index') }}"><span class="icon icon-arrow-left"></span> Terug naar alle {{ $manager->details()->plural }}</a>
+        <a class="center-y" href="{{ $manager->route('index') }}"><span class="icon icon-arrow-left"></span> @lang('chief::managers.back_all') {{ $manager->details()->plural }}</a>
     @endslot
 
     <div class="inline-group-s">
-        <button data-submit-form="createForm" type="button" class="btn btn-primary">Aanmaken</button>
+        <button data-submit-form="createForm" type="button" class="btn btn-primary">@lang('chief::managers.create')</button>
         {{--@include('chief::back.managers._partials.context-menu')--}}
     </div>
 
@@ -31,7 +31,7 @@
              ])
 
             <div class="stack text-right">
-                <button type="submit" class="btn btn-primary">Aanmaken</button>
+                <button type="submit" class="btn btn-primary">@lang('chief::managers.create')</button>
             </div>
 
         </form>
@@ -42,4 +42,3 @@
 @include('chief::back._elements.file-component')
 @include('chief::back._elements.slimcropper-component')
 @include('chief::back._elements.fileupload-component')
-

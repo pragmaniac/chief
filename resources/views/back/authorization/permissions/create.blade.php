@@ -1,6 +1,6 @@
 @extends('chief::back._layouts.master')
 
-@section('title', '| Create Permission')
+@section('title', '| '.trans('chief::permissions.create_title'))
 
 @section('content')
 
@@ -8,21 +8,21 @@
 
 		{{-- @include ('errors.list') --}}
 
-		<h1><i class='fa fa-key'></i> Add Permission</h1>
+		<h1><i class='fa fa-key'></i> @lang('chief::permissions.add')</h1>
 		<br>
 
 		<form action="{{ route('permissions.store') }}" method="POST">
 			{!! csrf_field() !!}
 
 			<div class="form-group">
-				<label for="name">Permission Name</label>
+				<label for="name">@lang('chief::permissions.name')</label>
 				<input type="text" name="name" value="{{ old('name') }}" class="form-control">
 			</div>
 			<br>
 
 			@if(!$roles->isEmpty())
 
-				<h4>Assign Permission to Roles</h4>
+				<h4>@lang('chief::permissions.assign')</h4>
 
 				@foreach ($roles as $role)
 					<input type="checkbox" value="{{ $role->id }}" name="roles[]">

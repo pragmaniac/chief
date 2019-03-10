@@ -149,7 +149,7 @@ class Nav
 
         // Surround within vue dropdown
         $output = '<dropdown>';
-        $output .= '<span class="center-y nav-item" slot="trigger" slot-scope="{ toggle, isActive }" @click="toggle">'. ($title ?? 'Collecties') .'</span>';
+        $output .= '<span class="center-y nav-item" slot="trigger" slot-scope="{ toggle, isActive }" @click="toggle">'. ($title ?? trans('nav.collections')) .'</span>';
         $output .= '<div v-cloak class="dropdown-box inset-s">';
         $output .= $items;
         $output .= '</div>';

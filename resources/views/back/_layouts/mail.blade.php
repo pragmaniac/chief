@@ -120,7 +120,7 @@
                     </td>
                 </tr>
                 </td>
-                </tr>
-            </table>
-</body>
+            </tr>
+        </table>
+    </body>
 </html>

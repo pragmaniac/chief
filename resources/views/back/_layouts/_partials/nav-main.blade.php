@@ -3,11 +3,11 @@
 
 {!! Thinktomorrow\Chief\Nav\Nav::fromTags('page')
     ->rejectKeys('singles')
-    ->renderItems('Collecties')
+    ->renderItems(trans('chief::nav.collections'))
 !!}
 
 {!! Thinktomorrow\Chief\Nav\Nav::allManagers()
     ->rejectKeys('singles')
-    ->rejectTags(['page','module', 'pagesection'])
-    ->renderItems('Models')
+    ->rejectTags(['page', 'module', 'pagesection'])
+    ->renderItems(trans('chief::nav.models'))
 !!}

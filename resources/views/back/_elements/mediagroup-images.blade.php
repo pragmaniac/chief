@@ -16,7 +16,7 @@
                             filename: item.filename,
                             url:item.url,
                             file: item.file,
-                            label: 'Drop hier uw afbeelding',
+                            label: '@lang('chief::components.drop_image')',
                         }"></slim>
                     </div>
                     <div v-if="{{ json_encode($multiple) }} == true || items.length < 1" class="column-3">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <a class="btn btn-subtle" @click.prevent="toggleReorder">
-                    @{{ reorder ? 'Gedaan met herschikken' : 'Herschik afbeeldingen' }}
+                    @{{ reorder ? '@lang('chief::components.order_stop')' : '@lang('chief::components.order_images')' }}
                 </a>
                 <input type="hidden" name="filesOrder[{{ $group }}]" :value="filesOrder">
             </filesupload>

@@ -1,12 +1,12 @@
 @chiefformgroup(['field' => 'name'])
-    @slot('label', 'Naam')
-    @slot('description', 'Unieke benaming van de rol')
+    @slot('label', trans('chief::roles.role_name'))
+    @slot('description', trans('chief::roles.role_name_description'))
     <input class="input inset-s" type="text" name="name" value="{{ old('name',$role->name) }}">
 @endchiefformgroup
 
 @chiefformgroup(['field' => 'permission_names'])
-    @slot('label', 'Rechten')
-    @slot('description', 'Met welke rechten heeft deze rol toegang tot de admin')
+    @slot('label', trans('chief::roles.permission_name'))
+    @slot('description', trans('chief::roles.permission.description'))
     <chief-multiselect
         name="permission_names"
         :options=@json($permission_names)

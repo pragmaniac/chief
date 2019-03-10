@@ -1,6 +1,6 @@
 <section class="row formgroup stack gutter-l">
     <div class="column-4">
-        <h2 class="formgroup-label">Interne titel</h2>
+        <h2 class="formgroup-label">@lang('chief::modules.internal_title')</h2>
     </div>
     <div class="formgroup-input column-8">
 
