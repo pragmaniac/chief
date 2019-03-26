@@ -141,7 +141,9 @@ class Page extends Model implements TranslatableContract, HasMedia, ActsAsParent
 
     public static function findBySlug($slug)
     {
-        return ($trans = PageTranslation::findBySlug($slug)) ? static::find($trans->page_id) : null;
+        $translationModel = (new static)->translationModel;
+
+        return ($trans = $translationModel::findBySlug($slug)) ? static::find($trans->page_id) : null;
     }
 
     public static function findPublishedBySlug($slug)

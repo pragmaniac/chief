@@ -44,7 +44,9 @@ class PageManager extends AbstractManager implements Manager, ManagerThatPublish
     {
         parent::__construct($registration);
 
-        $this->uniqueSlug = UniqueSlug::make(new PageTranslation)->slugResolver(function ($value) {
+        $translationModel = app($registration->model())->getTranslationModelName();
+
+        $this->uniqueSlug = UniqueSlug::make(new $translationModel)->slugResolver(function ($value) {
             return str_slug_slashed($value);
         });
     }
