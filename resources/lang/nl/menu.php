@@ -31,7 +31,7 @@ return [
     'edit'                      => 'Toevoegen',
     'back'                      => 'Terug naar het menu overzicht',
     'remove'                    => 'verwijderen',
-    'index_menuitem_title'        => 'Menu overzicht',
-    'manage'                       => 'beheren',
-    'show_menuitem_title'   => 'Menu :label'
+    'index_menuitem_title'      => 'Menu overzicht',
+    'manage'                    => 'beheren',
+    'show_menuitem_title'       => 'Menu :label'
 ];

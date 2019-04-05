@@ -1,10 +1,10 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title', 'settings')
+@section('page-title', trans('chief::system.settings'))
 
 @component('chief::back._layouts._partials.header')
     @slot('title', 'Settings')
-    <button data-submit-form="updateForm" type="button" class="btn btn-primary">Wijzigingen opslaan</button>
+    <button data-submit-form="updateForm" type="button" class="btn btn-primary">@lang('chief::system.save')</button>
 @endcomponent
 
 @section('content')

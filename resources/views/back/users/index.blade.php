@@ -1,10 +1,10 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title', 'Gebruikers')
+@section('page-title', trans('chief::users.index_title'))
 
 @chiefheader
     @slot('title', 'Gebruikers')
-    <a href="{{ route('chief.back.users.create') }}" class="btn btn-link text-primary">Nodig een nieuwe gebruiker uit.</a>
+    <a href="{{ route('chief.back.users.create') }}" class="btn btn-link text-primary">@lang('chief::users.invite_new_user')</a>
 @endchiefheader
 
 @section('content')

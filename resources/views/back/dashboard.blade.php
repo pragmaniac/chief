@@ -1,7 +1,7 @@
 @extends('chief::back._layouts.master')
 
 @section('page-title')
-    Dashboard
+    @lang('chief::dashboard.title')
 @stop
 
 @section('topbar-right')

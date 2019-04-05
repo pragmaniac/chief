@@ -1,29 +1,29 @@
 
 @chiefformgroup(['field' => ['firstname', 'lastname']])
-    @slot('label', 'Naam')
+    @slot('label', trans('chief::users.name'))
     <div class="row gutter">
         <div class="column-5">
-            <label for="firstName">Voornaam</label>
+            <label for="firstName">@lang('chief::users.firstname')</label>
             <input id="firstName" class="input inset-s" type="text" name="firstname" value="{{ old('firstname',$user->firstname) }}">
         </div>
         <div class="column-7">
-            <label for="lastName">Achternaam</label>
+            <label for="lastName">@lang('chief::users.lastname')</label>
             <input id="lastName" class="input inset-s" type="text" name="lastname" value="{{ old('lastname',$user->lastname) }}">
         </div>
     </div>
 @endchiefformgroup
 
 @chiefformgroup(['field' => 'email'])
-    @slot('label', 'E-mail')
-    @slot('description', 'Dit e-mail adres geldt tevens als login.')
+    @slot('label', trans('chief::users.email'))
+    @slot('description', trans('chief::users.email_description'))
     <label for="email">E-mail</label>
     <input id="email" class="input inset-s" type="email" name="email" value="{{ old('email',$user->email) }}">
 @endchiefformgroup
 
 @chiefformgroup(['field' => 'roles'])
-    @slot('label', 'Rechten')
-    @slot('description', 'Geef aan met een of meerdere rollen welke rechten deze gebruiker ter beschikking heeft. <a href="'.route('chief.back.roles.index').'">Meer uitleg</a>.')
-        <label for="roles">Rechten</label>
+    @slot('label', trans('chief::users.roles'))
+    @slot('description', trans('chief::users.roles_description'))
+        <label for="roles">@lang('chief::users.roles')</label>
         <chief-multiselect
             name="roles"
             :options=@json($roleNames)

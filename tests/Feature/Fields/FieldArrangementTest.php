@@ -1,11 +1,13 @@
 <?php
 
-namespace Thinktomorrow\Chief\Tests\Feature\Fields;
+namespace Thinktomorrow\Chief\Tests\Feature\Management;
 
 use Thinktomorrow\Chief\Fields\FieldArrangement;
 use Thinktomorrow\Chief\Fields\Fields;
 use Thinktomorrow\Chief\Fields\FieldsTab;
+use Thinktomorrow\Chief\Fields\RemainingFieldsTab;
 use Thinktomorrow\Chief\Fields\Types\Field;
+use Thinktomorrow\Chief\Fields\Types\InputField;
 use Thinktomorrow\Chief\Management\Register;
 use Thinktomorrow\Chief\Tests\Feature\Management\Fakes\ManagedModelFake;
 use Thinktomorrow\Chief\Tests\Feature\Management\Fakes\ManagedModelFakeTranslation;
@@ -59,6 +61,19 @@ class FieldArrangementTest extends TestCase
 
         $this->assertCount(2, $arrangement->addTab(new FieldsTab('second-tab'))->tabs());
         $this->assertCount(1, $arrangement->tabs());
+    }
+
+    /** @test */
+    public function remaining_field_is_automatically_placed_in_last_tab()
+    {
+        $arrangement = new FieldArrangement(new Fields([
+            InputField::make('first-input-field'), InputField::make('second-input-field')
+        ]), [new FieldsTab('first-tab', ['first-input-field'])]);
+
+        $arrangement = $arrangement->addTab(new RemainingFieldsTab('second-tab', []));
+
+        $this->assertCount(2, $arrangement->tabs());
+        $this->assertCount(2, $arrangement->fields());
     }
 
     /** @test */

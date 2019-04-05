@@ -13,7 +13,6 @@ class CreateMenuItemTest extends TestCase
         parent::setUp();
 
         $this->setUpDefaultAuthorization();
-        app()->setLocale('nl');
     }
 
     /** @test */

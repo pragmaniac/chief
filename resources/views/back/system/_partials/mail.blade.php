@@ -11,13 +11,13 @@
 </section>
 <section class="row formgroup gutter-l">
     <div class="column-5">
-        <h2 class="formgroup-label">Naam afzender</h2>
+        <h2 class="formgroup-label">@lang('chief::system.mail_sender')</h2>
         <p>
-            De afzender naam wordt door het systeem gebruikt in de standaard communicatie bv. auto-replies, wachtwoord-reset mail, ...
+                @lang('chief::system.mail_description')
         </p>
     </div>
     <div class="formgroup-input column-7">
-        <input type="text" name="settings[sender-name]" id="mail-sender" class="input inset-s" placeholder="Naam afzender">
+        <input type="text" name="settings[sender-name]" id="mail-sender" class="input inset-s" placeholder="@lang('chief::system.mail_sender')">
     </div>
 </section>
 {{-- <section class="row formgroup gutter-l border-primary">

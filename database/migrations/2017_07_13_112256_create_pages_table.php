@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatepagesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {

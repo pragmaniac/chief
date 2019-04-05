@@ -1,5 +1,4 @@
 <?php $managedModelId = str_slug($manager->route('delete')); ?>
-
 <modal id="delete-manager-{{ $managedModelId }}" class="large-modal" title=''>
     <form action="{{ $manager->route('delete') }}" method="POST" id="delete-manager-form-{{ $managedModelId }}" slot>
         @method('DELETE')
@@ -14,6 +13,6 @@
     </form>
 
     <div v-cloak slot="modal-action-buttons">
-        <button type="button" class="btn btn-o-tertiary stack" data-submit-form="delete-manager-form-{{ $managedModelId }}"@lang('chief::managers.confirm_removal')>Ja, verwijder</button>
+        <button type="button" class="btn btn-o-tertiary stack" data-submit-form="delete-manager-form-{{ $managedModelId }}">@lang('chief::managers.confirm_removal')</button>
     </div>
 </modal>

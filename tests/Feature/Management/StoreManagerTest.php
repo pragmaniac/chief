@@ -51,6 +51,7 @@ class StoreManagerTest extends TestCase
     /** @test */
     public function it_can_create_a_translatable_field()
     {
+
         $this->asAdmin()
             ->post($this->fake->route('store'), [
                 'trans' => [

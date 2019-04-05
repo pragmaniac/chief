@@ -1,10 +1,10 @@
 @extends('chief::back._layouts.master')
 
-@section('page-title', 'Nieuwe gebruiker uitnodigen')
+@section('page-title', trans('chief::users.invite_title'))
 
 @chiefheader
-	@slot('title', 'Nieuwe gebruiker')
-	<button data-submit-form="createForm" type="button" class="btn btn-o-primary">Stuur uitnodiging</button>
+	@slot('title', trans('chief::users.new_invite'))
+	<button data-submit-form="createForm" type="button" class="btn btn-o-primary">@lang('chief::users.send_invite')</button>
 @endchiefheader
 
 @section('content')
@@ -14,7 +14,7 @@
 
 		@include('chief::back.users._form')
 
-		<button type="submit" class="btn btn-primary right">Stuur uitnodiging</button>
+		<button type="submit" class="btn btn-primary right">@lang('chief::users.send_invite')</button>
 	</form>
 
 @endsection

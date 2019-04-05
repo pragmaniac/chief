@@ -1,24 +1,18 @@
 @extends('chief::back._layouts.solo')
 
-@section('page-title', 'Uitnodiging niet langer geldig')
+@section('page-title', trans('chief::users.expired_title'))
 
 @section('content')
     <div class="stack-l">
 
         <div class="stack">
-            <h1>Uitnodiging niet langer geldig.</h1>
+            <h1>@lang('chief::users.expired_title')</h1>
 
-            <p>Deze link is jammer genoeg ongeldig. Mogelijk is de reden een van de volgende: </p>
-            <ul>
-                <li>de uitnodiging is reeds aanvaard.</li>
-                <li>de uitnodiging is vervallen. Binnen 3 dagen van ontvangst dient een uitnodiging te worden aanvaard.</li>
-                <li>Zorg ervoor dat de volledige uitnodigingslink wordt gebruikt. Van zodra een deeltje ontbreekt, is deze niet geldig.</li>
-                <li>de uitnodiging is teruggetrokken door de beheerder.</li>
-            </ul>
+            @lang('chief::users.expired_description')
 
             <div class="stack">
-                <a class="btn btn-o-primary" href="mailto:{{ chiefSetting('contact.email') }}">Contacteer jouw beheerder ({{ chiefSetting('contact.name') }})</a>
-                <a class="btn btn-link" href="{{ route('chief.back.login') }}">Ga naar login pagina</a>
+                <a class="btn btn-o-primary" href="mailto:{{ chiefSetting('contact.email') }}">@lang('chief::users.contact') ({{ chiefSetting('contact.name') }})</a>
+                <a class="btn btn-link" href="{{ route('chief.back.login') }}">@lang('chief::users.to_login')</a>
             </div>
 
         </div>

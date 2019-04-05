@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePagesetsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('pagesets', function (Blueprint $table) {
@@ -21,11 +17,7 @@ class CreatePagesetsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('pagesets');

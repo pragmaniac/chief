@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateInvitationsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('invitations', function (Blueprint $table) {

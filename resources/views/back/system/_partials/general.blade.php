@@ -1,16 +1,16 @@
 <section class="row formgroup gutter-xs">
     <div class="column-5">
-        <h2 class="formgroup-label">Site titel</h2>
-        <p class="caption">Deze titel wordt gebruikt als SEO-titel.</p>
+        <h2 class="formgroup-label">@lang('chief::system.site_title')</h2>
+        <p class="caption">@lang('chief::system.site_title')</p>
     </div>
     <div class="column-7">
-        <input type="text" name="settings[seo-title]" id="site-name" class="input inset-s" placeholder="Site titel">
+        <input type="text" name="settings[seo-title]" id="site-name" class="input inset-s" placeholder="@lang('chief::system.site_title')">
     </div>
 </section>
 <section class="row formgroup gutter-xs">
     <div class="column-5">
-        <h2 class="formgroup-label">Korte omschrijving</h2>
-        <p class="caption">Deze omschrijving wordt gebruikt als SEO-omschrijving.</p>
+        <h2 class="formgroup-label">@lang('chief::system.short')</h2>
+        <p class="caption">@lang('chief::system.short_description')</p>
     </div>
     <div class="column-7">
         <textarea class="redactor inset-s" name="settings[seo-description]" id="description" cols="10" rows="5"></textarea>
@@ -18,8 +18,8 @@
 </section>
 <section class="row formgroup gutter-xs">
     <div class="column-5">
-        <h2 class="formgroup-label">Startpagina</h2>
-        <p class="caption">Kies hier de landingspagina van de website.</p>
+        <h2 class="formgroup-label">@lang('chief::system.homepage')</h2>
+        <p class="caption">@lang('chief::system.homepage_description')</p>
     </div>
     <div class="column-7">
         <chief-multiselect name="settings[homepage]" :options="['Home', 'Diensten', 'Artikels']">

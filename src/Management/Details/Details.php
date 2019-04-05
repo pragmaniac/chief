@@ -40,6 +40,11 @@ class Details implements Arrayable
         return null;
     }
 
+    public function has($attribute): bool
+    {
+        return null !== $this->get($attribute);
+    }
+
     public function set($attribute, $value)
     {
         $this->values[$attribute] = $value;

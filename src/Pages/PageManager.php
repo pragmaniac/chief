@@ -116,6 +116,10 @@ class PageManager extends AbstractManager implements Manager, ManagerThatPublish
                 ->translatable($this->model->availableLocales())
                 ->label('Zoekmachine omschrijving')
                 ->description('omschrijving van de pagina zoals in search engines (o.a. google) wordt weergegeven.'),
+            InputField::make('seo_keywords')
+                ->translatable($this->model->availableLocales())
+                ->label('Zoekmachine sleutelwoorden')
+                ->description('sleutelwoorden van de pagina waarop in search engines (o.a google) gezocht kan worden.'),
         ]);
     }
 
@@ -140,7 +144,7 @@ class PageManager extends AbstractManager implements Manager, ManagerThatPublish
             new FieldsTab('pagina', ['sections']),
             new RemainingFieldsTab('inhoud'),
             new FieldsTab('eigen modules', [], 'chief::back.pages._partials.modules'),
-            new FieldsTab('seo', ['seo_title', 'seo_description']),
+            new FieldsTab('seo', ['seo_title', 'seo_description', 'seo_keywords']),
         ]);
     }
 
@@ -150,7 +154,7 @@ class PageManager extends AbstractManager implements Manager, ManagerThatPublish
         if ($this->model->id) {
             return parent::details()
                 ->set('title', $this->model->title)
-                ->set('intro', 'laatst aangepast op ' . $this->model->updated_at->format('d/m/Y H:i'))
+                ->set('intro', trans('chief::pages.last_edit') . ' ' . $this->model->updated_at->format('d/m/Y H:i'))
                 ->set('context', '<span class="inline-s">' . $this->publicationStatusAsLabel() . '</span>');
         }
 

@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateMenuTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('menu_items', function (Blueprint $table) {

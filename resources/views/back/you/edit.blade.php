@@ -3,9 +3,9 @@
 @section('page-title', $user->fullname)
 
 @chiefheader
-@slot('title', 'Bewerk jouw profiel')
+@slot('title', trans('chief::you.manage'))
 <div class="inline-group">
-    <button data-submit-form="updateForm" type="button" class="btn btn-o-primary">Bewaar</button>
+    <button data-submit-form="updateForm" type="button" class="btn btn-o-primary">@lang('chief::you.save')</button>
 </div>
 @endchiefheader
 
@@ -17,7 +17,7 @@
 
         @include('chief::back.you._form')
 
-        <button type="submit" class="btn btn-primary right">Bewaar</button>
+        <button type="submit" class="btn btn-primary right">@lang('chief::you.save')</button>
     </form>
 
 @endsection

@@ -15,9 +15,14 @@ class ChiefAdminLocale
      */
     public function handle($request, Closure $next)
     {
+        if (env('APP_ENV') === 'testing') {
+            return $next($request);
+        }
+
         app()->setLocale(config('thinktomorrow.chief-settings.admin_locale'));
         config(['translatable.fallback_locale' => config('thinktomorrow.chief-settings.admin_fallback_locale')]);
         config(['translatable.use_fallback' => true]);
+
         $adminTranslations = [
             'chief::audit',
             'chief::nav',
@@ -29,7 +34,7 @@ class ChiefAdminLocale
             'chief::menu',
             'chief::modules',
             'chief::pages',
-            'chief::permissions', 
+            'chief::permissions',
             'chief::roles'
         ];
         $excludedFiles = array_merge(config('squanto.excluded_files'), $adminTranslations);

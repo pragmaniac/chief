@@ -7,24 +7,24 @@
 	<div class="inline-group">
 		{!! $user->present()->enabledAsLabel() !!}
 		@if($user->isEnabled())
-			<button data-submit-form="updateForm" type="button" class="btn btn-o-primary">Bewaar</button>
+			<button data-submit-form="updateForm" type="button" class="btn btn-o-primary">@lang('chief::users.save')</button>
 		@endif
 		<options-dropdown class="inline-block">
 			<div v-cloak>
 				<div>
-					<a class="block inset-s" href="{{ route('chief.back.invites.resend', $user->id) }}">Stuur nieuwe uitnodiging</a>
+					<a class="block inset-s" href="{{ route('chief.back.invites.resend', $user->id) }}">@lang('chief::users.send_new_invite')</a>
 				</div>
 				<hr>
 				<div class="inset-s font-s">
 					@if($user->isEnabled())
 						<form method="POST" action="{{ route('chief.back.users.disable', $user->id) }}">
 							{{ csrf_field() }}
-							<p>Om {{ $user->firstname }} tijdelijk de toegang <br>te ontnemen, kan je de account <input type="submit" class="text-error" value="blokkeren">.</p>
+							<p>@lang('chief::users.block_account', ['name' =>$user->firstname])</p>
 						</form>
 					@else
 						<form method="POST" action="{{ route('chief.back.users.enable', $user->id) }}">
 							{{ csrf_field() }}
-							<p>{{ $user->firstname }} is momenteel geblokkeerd. <br> <input type="submit" class="text-primary" value="Verleen opnieuw toegang">.</p>
+							<p>@lang('chief::users.blocked', ['name' => $user->firstname])</p>
 						</form>
 					@endif
 				</div>
@@ -41,7 +41,7 @@
 
 		@include('chief::back.users._form')
 
-		<button type="submit" class="btn btn-primary right">Bewaar aanpassingen</button>
+		<button type="submit" class="btn btn-primary right">@lang('chief::users.save_changes')</button>
 	</form>
 
 @endsection
