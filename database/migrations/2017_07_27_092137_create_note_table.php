@@ -5,7 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateNoteTable extends Migration
 {
-
     public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
@@ -30,11 +29,6 @@ class CreateNoteTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('note_translations');

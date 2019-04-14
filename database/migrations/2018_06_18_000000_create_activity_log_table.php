@@ -6,7 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateActivityLogTable extends Migration
 {
-
     public function up()
     {
         Schema::create(config('activitylog.table_name'), function (Blueprint $table) {

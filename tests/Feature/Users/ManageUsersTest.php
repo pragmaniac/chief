@@ -9,7 +9,7 @@ class ManageUsersTest extends TestCase
 {
     private $newUser;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -26,7 +26,8 @@ class ManageUsersTest extends TestCase
     public function full_admin_can_view_the_users_overview()
     {
         $response = $this->asAdmin()->get(route('chief.back.users.index'));
-        $response->assertStatus(200);
+        $response->assertViewIs('chief::back.users.index')
+                 ->assertStatus(200);
     }
 
     /** @test */

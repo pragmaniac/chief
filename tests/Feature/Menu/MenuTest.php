@@ -17,7 +17,7 @@ class MenuTest extends TestCase
 {
     use ChiefDatabaseTransactions;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -114,7 +114,7 @@ class MenuTest extends TestCase
             $item = $main->children()[$k];
 
             $this->assertEquals($page->menuLabel(), $item->label);
-            $this->assertEquals($page->menuUrl(), $item->url);
+            $this->assertEquals($page->url(), $item->url);
         }
     }
 
@@ -192,6 +192,20 @@ class MenuTest extends TestCase
     }
 
     /** @test */
+    public function if_a_page_is_hidden_it_is_still_shown_in_admin()
+    {
+        $page = factory(Page::class)->create(['hidden_in_menu' => 1]);
+        app()->setLocale('nl');
+        $first  = MenuItem::create(['label:nl' => 'first item']);
+        $second = MenuItem::create(['label:nl' => 'second item', 'parent_id' => $first->id, 'order' => 2]);
+        $third  = MenuItem::create(['label:nl' => 'last item', 'type' => 'internal', 'page_id' =>  $page->id, 'parent_id' => $first->id, 'order' => 1]);
+
+        $collection = ChiefMenu::fromMenuItems('main')->includeHidden()->items();
+        $this->assertInstanceof(NodeCollection::class, $collection);
+        $this->assertEquals(3, $collection->total());
+    }
+
+    /** @test */
     public function it_can_have_a_custom_value()
     {
         // test it out
@@ -245,7 +259,8 @@ class MenuTest extends TestCase
         $response = $this->asAdmin()
             ->get(route('chief.back.menuitem.create', 'main'));
 
-        $response->assertStatus(200);
+        $response->assertViewIs('chief::back.menu.create')
+                 ->assertStatus(200);
 
         $pages = $this->getResponseData($response, 'pages');
 
@@ -262,9 +277,9 @@ class MenuTest extends TestCase
 
         $first  = MenuItem::create(['label:nl' => 'first item', 'type' => 'internal', 'menu_type' => 'main']);
         $second = MenuItem::create(['label:nl' => 'second item', 'type' => 'internal', 'page_id' => $page->id, 'parent_id' => $first->id, 'menu_type' => 'main']);
-        
+
         MenuItem::create(['label:nl' => 'first item', 'type' => 'internal', 'menu_type' => 'footer']);
-        
+
         $collection = ChiefMenu::fromMenuItems('main')->items();
         $this->assertEquals($second->id, $collection->find('page_id', $page->id)->id);
         $this->assertEquals(2, $collection->total());

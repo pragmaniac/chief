@@ -6,7 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatepagesTable extends Migration
 {
-
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
@@ -39,11 +38,6 @@ class CreatepagesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('page_translations');

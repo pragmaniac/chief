@@ -2,6 +2,7 @@
 
 namespace Thinktomorrow\Chief\Tests\Feature\Pages;
 
+use Illuminate\Support\Facades\Route;
 use Thinktomorrow\Chief\Pages\Page;
 use Thinktomorrow\Chief\Tests\TestCase;
 
@@ -9,13 +10,16 @@ class ArchivePageTest extends TestCase
 {
     private $page;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->setUpDefaultAuthorization();
 
         $this->page = factory(Page::class)->create(['published' => false]);
+
+        Route::get('pages/{slug}', function () {
+        })->name('pages.show');
     }
 
     /** @test */

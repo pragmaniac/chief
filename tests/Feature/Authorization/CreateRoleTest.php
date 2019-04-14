@@ -9,7 +9,7 @@ use Thinktomorrow\Chief\Users\User;
 
 class CreateRoleTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -23,7 +23,8 @@ class CreateRoleTest extends TestCase
         $developer->assignRole('developer');
 
         $response = $this->actingAs($developer, 'chief')->get(route('chief.back.roles.create'));
-        $response->assertStatus(200);
+        $response->assertViewIs('chief::back.authorization.roles.create')
+                 ->assertStatus(200);
     }
 
     /** @test */

@@ -9,7 +9,7 @@ class UpdateUserTest extends TestCase
 {
     private $newUser;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -29,7 +29,8 @@ class UpdateUserTest extends TestCase
         $this->disableExceptionHandling();
 
         $response = $this->asAdmin()->get(route('chief.back.users.edit', $this->newUser->id));
-        $response->assertStatus(200);
+        $response->assertViewIs('chief::back.users.edit')
+                 ->assertStatus(200);
     }
 
     /** @test */
@@ -73,6 +74,52 @@ class UpdateUserTest extends TestCase
         $response = $this->asAuthor()->put(route('chief.back.users.update', $this->newUser->id), $this->validUpdateParams());
 
         $response->assertRedirect(route('chief.back.dashboard'));
+
+        // Assert nothing was updated
+        $this->assertNewValues($this->newUser->fresh());
+    }
+
+//    /** @test */
+    public function non_developer_cannot_update_an_existing_developer()
+    {
+        $this->newUser->assignRole('developer');
+
+        $response = $this->asAdmin()->put(route('chief.back.users.update', $this->newUser->id), $this->validUpdateParams([
+            'roles' => ['admin'],
+        ]));
+
+        $response->assertStatus(302)
+            ->assertRedirect(route('chief.back.users.index'))
+            ->assertSessionHas('messages.success');
+
+        // Assert roles were not updated
+        $this->assertEquals(['author','developer'], $this->newUser->fresh()->roles->pluck('name')->toArray());
+    }
+
+    /** @test */
+    public function only_developer_can_give_developer_role_to_user()
+    {
+        $response = $this->asDeveloper()->put(route('chief.back.users.update', $this->newUser->id), $this->validUpdateParams([
+            'roles' => ['developer'],
+        ]));
+
+        $response->assertStatus(302)
+            ->assertRedirect(route('chief.back.users.index'))
+            ->assertSessionHas('messages.success');
+
+        $this->assertEquals(['developer'], $this->newUser->fresh()->roles->pluck('name')->toArray());
+    }
+
+    /** @test */
+    public function non_developer_cannot_give_developer_role_to_user()
+    {
+        $response = $this->asAdmin()->put(route('chief.back.users.update', $this->newUser->id), $this->validUpdateParams([
+            'roles' => ['developer'],
+        ]));
+
+        $response->assertStatus(302)
+            ->assertRedirect(route('chief.back.dashboard'))
+            ->assertSessionHas('messages.error');
 
         // Assert nothing was updated
         $this->assertNewValues($this->newUser->fresh());

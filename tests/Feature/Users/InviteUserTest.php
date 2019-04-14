@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Notification;
 
 class InviteUserTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -23,7 +23,8 @@ class InviteUserTest extends TestCase
     public function only_admin_can_view_the_invite_form()
     {
         $response = $this->asAdmin()->get(route('chief.back.users.create'));
-        $response->assertStatus(200);
+        $response->assertViewIs('chief::back.users.create')
+                 ->assertStatus(200);
     }
 
     /** @test */

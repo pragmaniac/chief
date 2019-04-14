@@ -6,7 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateModulesTable extends Migration
 {
-
     public function up()
     {
         Schema::create('modules', function (Blueprint $table) {

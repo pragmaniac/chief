@@ -34,14 +34,19 @@
                     @role('developer')
                         <li><a class="label label--primary squished-xs" target="_blank" href="/spirit">Spirit</a></li>
                     @endrole
-                    @if(\Illuminate\Support\Facades\Gate::check('update-user') || \Illuminate\Support\Facades\Gate::check('update-setting'))
+                    @if(\Illuminate\Support\Facades\Gate::check('view-user') || \Illuminate\Support\Facades\Gate::check('view-role') || \Illuminate\Support\Facades\Gate::check('view-audit') || \Illuminate\Support\Facades\Gate::check('update-setting'))
                         <dropdown>
                             <span class="center-y nav-item {{ (isActiveUrl('admin/users*') || isActiveUrl('admin/settings*') || isActiveUrl('admin/audit*')) ? 'active' : '' }}" slot="trigger" slot-scope="{ toggle, isActive }" @click="toggle"><span class="icon icon-cog"></span></span>
                             <div v-cloak class="dropdown-box inset-s">
                                 @can('view-user')
                                     <a class="block squished --link-with-bg {{ isActiveUrl('admin/users*') ? 'active' : '' }}" href="{{ route('chief.back.users.index') }}">@lang('chief::nav.users')</a>
                                 @endcan
+                                @can('view-role')
+                                    <a class="block squished --link-with-bg {{ isActiveUrl('admin/roles*') ? 'active' : '' }}" href="{{ route('chief.back.roles.index') }}">@lang('chief::nav.roles')</a>
+                                @endcan
+                                @can('update-setting')
                                     <a class="block squished --link-with-bg {{ isActiveUrl('admin/settings*') ? 'active' : '' }}" href="{{ route('chief.back.settings.edit') }}">@lang('chief::nav.settings')</a>
+                                @endcan
                                 @can('view-audit')
                                     <a class="block squished --link-with-bg {{ isActiveUrl('admin/audit*') ? 'active' : '' }}" href="{{ route('chief.back.audit.index') }}">@lang('chief::nav.audit')</a>
                                 @endcan
@@ -53,7 +58,9 @@
                         <dropdown>
                             <span class="nav-item" slot="trigger" slot-scope="{ toggle, isActive }" @click="toggle">{{ chiefAdmin()->firstname }}</span>
                             <div v-cloak class="dropdown-box">
-                                <a class="block squished-s --link-with-bg" href="{{ route('chief.back.you.edit') }}">@lang('chief::nav.edit_profile')</a>
+                                @can('update-you')
+                                    <a class="block squished-s --link-with-bg" href="{{ route('chief.back.you.edit') }}">@lang('chief::nav.edit_profile')</a>
+                                @endcan
                                 <a class="block squished-s --link-with-bg" href="{{ route('chief.back.password.edit') }}">@lang('chief::nav.edit_password')</a>
                                 <a class="block squished-s --link-with-bg" href="{{ route('chief.back.logout') }}">@lang('chief::nav.logout')</a>
                             </div>

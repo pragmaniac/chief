@@ -15,7 +15,7 @@ class EditManagerTest extends TestCase
     private $manager;
     private $model;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -34,6 +34,7 @@ class EditManagerTest extends TestCase
     public function admin_can_view_the_edit_form()
     {
         $this->asAdmin()->get($this->manager->route('edit'))
+            ->assertViewIs('chief::back.managers.edit')
             ->assertStatus(200);
     }
 

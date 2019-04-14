@@ -6,7 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class ChangeMorphKey extends Migration
 {
-
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {

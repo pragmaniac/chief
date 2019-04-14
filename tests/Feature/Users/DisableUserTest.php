@@ -9,7 +9,7 @@ class DisableUserTest extends TestCase
 {
     private $user;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -33,6 +33,21 @@ class DisableUserTest extends TestCase
         $this->asAdmin()->post(route('chief.back.users.disable', $this->user->id));
 
         $this->assertFalse($this->user->fresh()->isEnabled());
+    }
+
+    /** @test */
+    public function admin_can_not_disable_themself()
+    {
+        $admin = $this->admin();
+        $admin->enable();
+
+        $this->assertTrue($admin->isEnabled());
+
+        $response = $this->actingAs($admin, 'chief')->post(route('chief.back.users.disable', $admin->id));
+
+        $response->assertSessionHas('messages.error', 'U kan uzelf niet blokkeren.');
+
+        $this->assertTrue($this->user->fresh()->isEnabled());
     }
 
     /** @test */

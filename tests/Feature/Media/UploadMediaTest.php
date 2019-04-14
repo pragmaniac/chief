@@ -15,7 +15,7 @@ class UploadMediaTest extends TestCase
 {
     use PageFormParams;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -95,7 +95,7 @@ class UploadMediaTest extends TestCase
 
         // Assert replacement took place
         $this->assertCount(1, $page->fresh()->getAllFiles(MediaType::HERO));
-        $this->assertContains('tt-favicon.png', $page->fresh()->getFileUrl(MediaType::HERO));
+        $this->assertStringContainsString('tt-favicon.png', $page->fresh()->getFileUrl(MediaType::HERO));
     }
 
     /** @test */

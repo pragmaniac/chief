@@ -13,7 +13,7 @@ class EditTranslationTest extends TestCase
 
     private $squantoPage;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -28,10 +28,9 @@ class EditTranslationTest extends TestCase
     /** @test */
     public function admin_can_view_the_edit_form()
     {
-        $this->disableExceptionHandling();
-
         $response = $this->asAdmin()->get(route('squanto.edit', $this->squantoPage->id));
-        $response->assertStatus(200);
+        $response->assertViewIs('squanto::edit')
+                 ->assertStatus(200);
     }
 
     /** @test */

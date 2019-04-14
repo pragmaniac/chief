@@ -4,11 +4,14 @@ namespace Thinktomorrow\Chief\Management;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Thinktomorrow\Chief\Fields\FieldArrangement;
 use Thinktomorrow\Chief\Fields\Fields;
 use Thinktomorrow\Chief\Fields\Types\Field;
-use Thinktomorrow\Chief\Fields\FieldArrangement;
+use Thinktomorrow\Chief\Filters\Filters;
+use Thinktomorrow\Chief\Management\Assistants\Assistant;
 use Thinktomorrow\Chief\Management\Details\Details;
 use Thinktomorrow\Chief\Management\Details\Sections;
+use Thinktomorrow\Chief\Management\Exceptions\NotAllowedManagerRoute;
 
 interface Manager
 {
@@ -41,7 +44,7 @@ interface Manager
      *
      * @return Collection of ManagedModel
      */
-    public function findAllManaged(): Collection;
+    public function findAllManaged($apply_filters = false): Collection;
 
     /**
      * Retrieve the managed model instance
@@ -57,7 +60,7 @@ interface Manager
      * @param $verb
      * @throws NotAllowedManagerRoute
      */
-    public function guard($verb);
+    public function guard($verb): self;
 
     /**
      * The set of fields that should be manageable for a certain model.
@@ -79,6 +82,13 @@ interface Manager
      * @return FieldArrangement
      */
     public function fieldArrangement($key = null): FieldArrangement;
+
+    /**
+     * Collection of filters to be used on the admin index pages.
+     *
+     * @return Filters
+     */
+    public static function filters(): Filters;
 
     /**
      * @param Field|string $field

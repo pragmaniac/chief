@@ -6,7 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class AddRelationsTable extends Migration
 {
-
     public function up()
     {
         Schema::create('relations', function (Blueprint $table) {
@@ -24,11 +23,6 @@ class AddRelationsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('relations');
